@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Technooze_Tnav extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Technooze
+ * @package    Technooze_Tnav
+ * @copyright  Copyright (c) 2008 Technooze LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Technooze
+ * @package    Technooze_Tnav
+ * @author     Damodar Bashyal (http://dltr.org/)
+ */
+ -->
+<config>
+    <modules>
+        <Technooze_Tnav>
+            <version>0.0.1</version>
+        </Technooze_Tnav>
+    </modules>
+    <frontend>
+        <routers>
+            <tnav>
+                <use>standard</use>
+                <args>
+                    <module>Technooze_Tnav</module>
+                    <frontName>tnav</frontName>
+                </args>
+            </tnav>
+        </routers>
+        <layout>
+            <updates>
+                <tnav>
+                    <file>technooze/tnav.xml</file>
+                </tnav>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<tnav>
+				<use>admin</use>
+				<args>
+					<module>Technooze_Tnav</module>
+					<frontName>tnav</frontName>
+				</args>
+			</tnav>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<catalog>
+				<children>
+					<tnav module="tnav">
+						<title>Mobile Categories</title>
+						<sort_order>20</sort_order>
+						<children>
+							<items module="tnav">
+								<title>Manage Categories</title>
+								<sort_order>0</sort_order>
+								<action>tnav/adminhtml_tnav</action>
+							</items>
+						</children>
+					</tnav>
+				</children>
+			</catalog>
+		</menu>
+		<layout>
+			<updates>
+				<tnav>
+					<file>technooze/tnav.xml</file>
+				</tnav>
+			</updates>
+		</layout>
+    </adminhtml>
+    <global>
+        <models>
+            <tnav>
+                <class>Technooze_Tnav_Model</class>
+                <resourceModel>tnav_mysql4</resourceModel>
+            </tnav>
+            <tnav_mysql4>
+                <class>Technooze_Tnav_Model_Mysql4</class>
+                <entities>
+                    <tnav>
+                        <table>technooze_tnav</table>
+                    </tnav>
+                    <categories>
+                        <table>technooze_tnav_categories</table>
+                    </categories>
+                </entities>
+            </tnav_mysql4>
+        </models>
+        <resources>
+            <tnav_setup>
+                <setup>
+                    <module>Technooze_Tnav</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tnav_setup>
+            <tnav_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </tnav_write>
+            <tnav_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </tnav_read>
+        </resources>
+        <blocks>
+            <tnav>
+                <class>Technooze_Tnav_Block</class>
+            </tnav>
+        </blocks>
+        <helpers>
+            <tnav>
+                <class>Technooze_Tnav_Helper</class>
+            </tnav>
+        </helpers>
+    </global>
+</config>

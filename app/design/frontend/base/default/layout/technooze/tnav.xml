@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <tnav_index_index>
+		<reference name="head">
+            <action method="addCss"><stylesheet>css/tnav.css</stylesheet></action>
+			<action method="setTitle"><title>Displaying all the available Categories</title></action>
+		</reference>
+        <reference name="content">
+            <block type="tnav/tnav" name="tnav" template="technooze/tnav/tnav.phtml" />
+        </reference>
+    </tnav_index_index>
+</layout>

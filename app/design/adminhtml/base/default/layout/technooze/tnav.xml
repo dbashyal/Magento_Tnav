@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <tnav_adminhtml_tnav_index>
+		<reference name="content">
+            <block type="tnav/adminhtml_tnav" name="tnav" />
+        </reference>
+    </tnav_adminhtml_tnav_index>
+</layout>

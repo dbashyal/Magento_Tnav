@@ -1,0 +1,40 @@
+<h1><?php echo $this->__('Mobile Categories') ?></h1>
+
+<div class="nav-wrap">
+    <div id="nav-container">
+       <ul id="nav" style="width:480px">
+       <?php
+       $tnav = $this->getTnav();
+       foreach($tnav as $v): ?>
+           <?php $children = $v->getChildCategories() ?>
+           <!--Thumbnail-->
+            <li class="parent">
+               <a href="<?php echo $v->getUrl() ?>"><img src=" <?php echo $v->getThumbnail() ?>" /> <span><strong><?php echo $v->getName() ?></strong></span></a>
+               <?php if($children && $children->count()):?>
+                <ul class="shown-sub">
+                   <?php foreach($children as $child): ?>
+                   <li class="level1"><a href="<?php echo $child->getUrl() ?>"><span><?php echo $child->getName() ?></span></a></li>
+                   <?php endforeach; ?>
+                </ul>
+                <?php endif ?>
+            <?php endforeach ?>
+            </li>
+       </ul>
+    </div>
+<div>
+
+<?php
+/*
+Array (
+    [tnav_id] => 1
+    [name] => Plus Size
+    [thumbnail] => tnav/m/o/mobile_plussize.jpg
+    [url_key] => womens-plus-size-costumes.html
+    [meta_title] =>
+    [meta_keywords] =>
+    [meta_description] =>
+    [children_ids] => 1,2,3,4
+    [sort_order] => 0
+    [status] => 1
+)
+ */
