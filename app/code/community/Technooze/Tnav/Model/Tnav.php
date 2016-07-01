@@ -29,17 +29,27 @@ class Technooze_Tnav_Model_Tnav extends Mage_Core_Model_Abstract
     }
 
     public function getChildCategories(){
+        $id = $this->getId();
         $ids = $this->getData('children_ids');
         if(empty($ids)){
             return false;
         }
         $ids = explode(',', $ids);
 
-        return Mage::getModel('catalog/category')
+     
+        
+        $collection = Mage::getModel('catalog/category')
             ->getCollection()
             ->addFieldToFilter('is_active',1)
             ->addFieldToFilter('entity_id', array("in"=>$ids))
             ->addAttributeToSelect('*');
+        
+        $strSort = 'FIELD(entity_id, \''.implode('\', \'', $ids).'\')';
+        
+        $collection->getSelect()->order(new Zend_Db_Expr($strSort));
+        
+        return $collection;
+        
     }
 
     public function getThumbnail(){
